@@ -1,0 +1,24 @@
+[server]
+# access over the network
+hosts = 0.0.0.0:5232, [::]:5232
+max_connections = 20
+# 100 Megabyte
+max_content_length = 100000000
+# 30 seconds
+timeout = 30
+
+[web]
+type = radicale_infcloud
+
+[storage]
+filesystem_folder = /data/collections
+
+[headers]
+Access-Control-Allow-Origin = *
+Access-Control-Allow-Methods = GET, POST, OPTIONS, PROPFIND, PROPPATCH, REPORT, PUT, MOVE, DELETE, LOCK, UNLOCK
+Access-Control-Allow-Headers = User-Agent, Authorization, Content-type, Depth, If-match, If-None-Match, Lock-Token, Timeout, Destination, Overwrite, X-client, X-Requested-With
+Access-Control-Expose-Headers = Etag
+
+[logging]
+level = warning
+# level = debug

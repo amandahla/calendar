@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  radicale:
+    build: ./radicale
+    networks:
+      - calendar-network
+    volumes:
+      - ${RADICALE_DATA_DIR}:/data
+  infcloud:
+    build: ./infcloud
+    depends_on:
+      - radicale
+    ports:
+      - 80:80
+    networks:
+      - calendar-network
+
+networks:
+  calendar-network:
+    driver: bridge
